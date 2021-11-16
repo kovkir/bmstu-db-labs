@@ -1,7 +1,10 @@
 -- 23. Инструкция SELECT, использующая рекурсивное обобщенное табличное выражение.
 
+-- Удаление таблицы.
+DROP TABLE IF EXISTS friends_table;
+
 -- Создаем таблицу друзей футболистов.
-CREATE TABLE friends_table
+CREATE TABLE IF NOT EXISTS friends_table
 (
     id INT NOT NULL PRIMARY KEY,
     name VARCHAR(32),
@@ -9,17 +12,11 @@ CREATE TABLE friends_table
 );
 
 -- Заполняем таблицу.
-INSERT INTO friends_table(id, name, friend_id) 
-VALUES(1, 'Messi', 3);
-
-INSERT INTO friends_table(id, name, friend_id) 
-VALUES(2, 'Ronaldo', Null);
-
-INSERT INTO friends_table(id, name, friend_id) 
-VALUES(3, 'Neymar', 4);
-
-INSERT INTO friends_table(id, name, friend_id) 
-VALUES(4, 'Mbappe', 2);
+INSERT INTO friends_table(id, name, friend_id) VALUES
+(1, 'Messi', 3),
+(2, 'Ronaldo', Null),
+(3, 'Neymar', 4),
+(4, 'Mbappe', 2);
 
 SELECT *
 FROM friends_table;
@@ -40,6 +37,3 @@ WITH RECURSIVE recursive_friends(id, name, friend_id) AS
 )
 SELECT *
 FROM recursive_friends;
-
--- Удаление таблицы.
-DROP TABLE friends_table;

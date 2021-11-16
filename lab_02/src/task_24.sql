@@ -3,4 +3,4 @@
 SELECT id, name, country, AVG(foundation_date) OVER (PARTITION BY country) AS avg_foundation_date
 FROM club
 
--- вывести id, название, страну клуба, а также среднюю дата основания клубов в этой же стране.
+-- вывести id, название, страну клуба, а также среднюю дату основания клубов в этой же стране.
