@@ -16,5 +16,5 @@ WHERE last_name IN
 -- Удалить футболистов из таблицы, если их фамилия совподает с фамилиями тренеров, id которых больше 5000.
 
 SELECT *
-FROM footballer, coach
+FROM footballer
 WHERE last_name = 'Messi'

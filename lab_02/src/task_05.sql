@@ -4,7 +4,7 @@ SELECT first_name, last_name, country
 FROM coach
 where age < 35 AND EXISTS
 (
-    SELECT id
+    SELECT fcc.id
     FROM footballer_coach_club AS fcc
     WHERE fcc.coach_id = coach.id AND number_goals > 8
 )

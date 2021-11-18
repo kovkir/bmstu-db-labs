@@ -26,14 +26,14 @@ FROM friends_table;
 WITH RECURSIVE recursive_friends(id, name, friend_id) AS
 (
     -- Определение закрепленного элемента.
-    SELECT id, name, friend_id
+    SELECT ft.id, ft.name, ft.friend_id
     FROM friends_table AS ft
     WHERE ft.id = 1
     UNION ALL
     -- Определение рекурсивного элемента
     SELECT ft.id, ft.name, ft.friend_id
     FROM friends_table AS ft
-    INNER JOIN recursive_friends AS rec ON ft.id = rec.friend_id
+    JOIN recursive_friends AS rec ON ft.id = rec.friend_id
 )
 SELECT *
 FROM recursive_friends;

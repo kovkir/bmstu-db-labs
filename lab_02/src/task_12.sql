@@ -1,10 +1,10 @@
 -- 12. Инструкция SELECT, использующая вложенные коррелированные подзапросы в качестве производных таблиц в предложении FROM.
 
-SELECT first_name, last_name, age
+SELECT first_name, last_name, age, number_goals
 FROM footballer AS F 
 JOIN 
 (
-    SELECT footballer_id
+    SELECT footballer_id, number_goals
     FROM footballer_coach_club
     WHERE number_goals = 10
 ) AS FCC ON F.id = FCC.footballer_id

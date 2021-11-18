@@ -4,4 +4,4 @@ SELECT AVG(salary)
 FROM footballer
 WHERE country = 'Russian Federation' AND age < 20
 
--- Получить среднюю зарплату футболистов из Росси моложе 20 лет.
+-- Получить среднюю зарплату футболистов из России моложе 20 лет.

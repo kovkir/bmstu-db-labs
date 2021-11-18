@@ -2,7 +2,7 @@
 
 SELECT first_name, last_name,
 (
-	SELECT number_goals
+	SELECT fcc.number_goals
 	FROM footballer_coach_club AS fcc
 	WHERE fcc.id = footballer.id
 )
