@@ -8,12 +8,12 @@ CREATE TABLE if not exists footballer
     salary         INTEGER NOT NULL,
     phone_number   VARCHAR(30) UNIQUE NOT NULL,
     average_rating FLOAT(10),
-    friend         serial references footballer(id),
+ -- friend         serial references footballer(id), - это поле просили добавить на защите
     check (age >= 16 and age <= 45),
     check ((first_name != '') and (last_name != '')),
     check (country != ''),
     check ((salary >= 100000) and (salary <= 10000000)),
-    check ((average_rating >= 1) and (average_rating <= 10)),
+    check ((average_rating >= 1) and (average_rating <= 10))
 );
 
 CREATE TABLE if not exists coach
