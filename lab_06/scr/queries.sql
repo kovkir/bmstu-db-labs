@@ -98,7 +98,7 @@ END;
 $$ LANGUAGE PLPGSQL;
 
 SELECT *
-FROM best_young_footballers(18)
+FROM best_young_footballers(18);
 
 -- 7. Вызвать хранимую процедуру.
 -- Увеличить тренеру с заданным id зарплаты на заданную сумму.

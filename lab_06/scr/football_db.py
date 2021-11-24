@@ -41,6 +41,8 @@ class FootballDB:
 
         sql_query = \
             """
+            -- 1. Выполнить скалярный запрос.
+
             SELECT avg(salary)
             FROM footballer
             WHERE country = 'Russian Federation';
@@ -60,6 +62,8 @@ class FootballDB:
 
         sql_query = \
             """
+            -- 2. Выполнить запрос с несколькими соединениями (JOIN).
+
             SELECT f.last_name  AS surname_footballer,
                 co.last_name AS surname_coach,
                 cl.name      AS name_club, 
@@ -90,6 +94,8 @@ class FootballDB:
 
         sql_query = \
             """
+            -- 3. Выполнить запрос с ОТВ(CTE) и оконными функциями.
+
             WITH table_with_duplicates AS
             (
                 SELECT *
@@ -128,6 +134,8 @@ class FootballDB:
 
         sql_query = \
             """
+            -- 4. Выполнить запрос к метаданным.
+
             SELECT pg.datname, pg.datconnlimit
             FROM pg_database AS pg
             WHERE pg.datname = 'football_db';
@@ -147,6 +155,8 @@ class FootballDB:
 
         sql_query = \
             """
+            -- 5. Вызвать скалярную функцию.
+
             CREATE OR REPLACE FUNCTION amount_money(salary INT, work_experience INT)
             RETURNS DECIMAL AS $$
             BEGIN
@@ -178,6 +188,8 @@ class FootballDB:
 
         sql_query = \
             """
+            -- 6. Вызвать многооператорную табличную функцию.
+
             CREATE OR REPLACE FUNCTION best_young_footballers(age_f INT)
             RETURNS TABLE
             (
@@ -212,7 +224,7 @@ class FootballDB:
             $$ LANGUAGE PLPGSQL;
 
             SELECT *
-            FROM best_young_footballers(18)
+            FROM best_young_footballers(18);
             """
         
         if self.__sql_executer(sql_query) is not None:
@@ -233,6 +245,8 @@ class FootballDB:
 
         sql_query = \
             """
+            -- 7. Вызвать хранимую процедуру.
+
             CREATE OR REPLACE PROCEDURE change_salary(id_coach INT, salary_increase INT)
             AS $$
             BEGIN
@@ -268,6 +282,8 @@ class FootballDB:
 
         sql_query = \
             """
+            -- 8. Вызвать системную функцию.
+
             SELECT *
             FROM current_database();
             """
@@ -284,6 +300,8 @@ class FootballDB:
 
         sql_query = \
             """
+            -- 9. Создать таблицу в базе данных, соответствующую тематике БД.
+
             DROP TABLE IF EXISTS friends_table;
 
             CREATE TABLE IF NOT EXISTS friends_table
@@ -307,6 +325,8 @@ class FootballDB:
 
         sql_query = \
             """
+            -- 10. Выполнить вставку данных в созданную таблицу с использованием инструкции INSERT.
+            
             INSERT INTO friends_table(id, name, age, friend_id) VALUES
             (1, 'Messi', 34, 3),
             (2, 'Ronaldo', 36, Null),
