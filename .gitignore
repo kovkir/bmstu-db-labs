@@ -15,3 +15,5 @@
 *.out
 *.synctex.gz
 *.toc
+
+*.json
